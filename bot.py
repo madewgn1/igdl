@@ -13,7 +13,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 # Configs
 API_HASH = "6cc6449dcef22f608af2cf7efb76c99d"
 API_ID = 2345226
-BOT_TOKEN = "5277895733:AAE4ZUdXauqDkerpV4oW9kEyL7ZfQ4beEbk"
+#BOT_TOKEN = "5277895733:AAE4ZUdXauqDkerpV4oW9kEyL7ZfQ4beEbk"
+BOT_TOKEN="5735001878:AAG-a2CEBQWBCsAKpLlxsa03Zq8vJpWRXYs"
 downloads = './downloads/{}/'
 
 #Button
@@ -38,7 +39,7 @@ xbot = Client('InstaDL',
 # Start
 @xbot.on_message(filters.command('start') & filters.private)
 async def start(bot, update):
-  await update.reply("I'm InstagramDL!\nYou can download instagram url video/image using this bot",True, reply_markup=InlineKeyboardMarkup(START_BUTTONS))
+  await update.reply("Halo, Saya IGMD! \nKamu dapat mendownload foto, video, maupun reels dari Instagram. Cukup pastekan link dan kirim.")
 
 # Downloader for tiktok
 @xbot.on_message(filters.regex(pattern='.*http.*') & filters.private)
