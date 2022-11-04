@@ -28,7 +28,13 @@ def dl(link):
 
 def acak():
     return token_urlsafe(4)
-
+def cek(link):
+    get = req.get(url+link).text
+    x = get.replace('\\',"")
+    data = json.loads(x)
+    type = data["graphql"]["shortcode_media"]["__typename"]
+    return type
+ 
 #print(dl("ttps://www.instagram.com/p/CkdUpr9v9P2/?igshid=YmMyMTA2M2Y="))
 #print(dl("https://www.instagram.com/tv/CkdGXSVAPk6/?igshid=YmMyMTA2M2Y="))
 #print(acak())
