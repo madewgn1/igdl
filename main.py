@@ -18,6 +18,11 @@ def dl(link):
         h = data["graphql"]["shortcode_media"]["display_resources"][0]["src"]
 #        return [i["src"] for i in h["display_resources"]]
         return h
+    elif type == "GraphSidecar":
+        h = data["graphql"]["shortcode_media"]["edge_sidecar_to_children"]["edges"]
+        gambar = [i["node"]["display_url"] for i in data]
+        return gambar
+
     else:
         return data["graphql"]["shortcode_media"]["video_url"]
 
