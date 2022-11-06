@@ -46,20 +46,42 @@ async def start(bot, update):
 async def insta(bot, update):
     print("start cmd")
     url = update.text
+    tes = cek(url)
     if not 'instagram.com' in url:
         return ":)"
+
+
+
+
+    elif "GraphImage" or "GraphVideo" in tes:
+        result = dl(url)
+        cak = acak()
+        r = requests.get(result, allow_redirects=True)
+        if ".mp4" in result:
+            open(f'{cak}.mp4', 'wb').write(r.content)
+            print("dl berhasil otw upload")
+            await bot.send_video(update.chat.id, f'{cak}.mp4',)
+            os.remove(f"{cak}.mp4")
+        else:
+            print("gambar")
+            open(f'{cak}.jpg', 'wb').write(r.content)
+            await bot.send_photo(update.chat.id, f'{cak}.jpg',)
+            os.remove(f"{cak}.jpg")
+#
+
+
     else:
         dirs = downloads.format(uuid.uuid4().hex)
         os.makedirs(dirs)
         url = update.text
-        tes = cek(url)
         if tes == "GraphSidecar":
             #result = dl(url)
-            result = dl(url)
-#            cak = acak()
-
-            r = requests.get(result, allow_redirects=True)
+            result = dl(url)#           cu
+            jumlah = len(result)
+#            jumlah = jumlah - 1
+#            for x in range(jumlah):
             if ".mp4" in result:
+                r = requests.get(result, allow_redirects=True)
                 cak = acak()
                 open(f'{cak}.mp4', 'wb').write(r.content)
                 print("dl berhasil otw upload")
@@ -67,8 +89,8 @@ async def insta(bot, update):
                 os.remove(f"{cak}.mp4")
             else:
                 print("gambar")
-                for x in result:
-                    r = requests.get(x, allow_redirects=True)
+                for x in range(jumlah):
+                    r = requests.get(result[x])
                     cak = acak()
                     open(f'{cak}.jpg', 'wb').write(r.content)
                     await bot.send_photo(update.chat.id, f'{cak}.jpg',)

@@ -20,7 +20,7 @@ def dl(link):
         return h
     elif type == "GraphSidecar":
         h = data["graphql"]["shortcode_media"]["edge_sidecar_to_children"]["edges"]
-        gambar = [i["node"]["display_url"] for i in data]
+        gambar = [i["node"]["display_url"] for i in h]
         return gambar
 
     else:
@@ -36,7 +36,12 @@ def cek(link):
     return type
  
 #print(dl("ttps://www.instagram.com/p/CkdUpr9v9P2/?igshid=YmMyMTA2M2Y="))
+
+#print(dl("https://www.instagram.com/p/Cf08NZ-BGnH/?igshid=YmMyMTA2M2Y="))
+
+
 #print(dl("https://www.instagram.com/tv/CkdGXSVAPk6/?igshid=YmMyMTA2M2Y="))
+
 #print(acak())
 
 
